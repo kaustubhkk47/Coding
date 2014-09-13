@@ -1,7 +1,6 @@
 #include<iostream>
 #include<vector>
 #include<queue>
-#include<list>
 using namespace std;
 
 void BFS(vector<vector<int> > g, int s){
@@ -10,22 +9,20 @@ void BFS(vector<vector<int> > g, int s){
     for(int i = 0; i < g.size(); i++){
         visited[i] == true;
     }
-    
     visited[s] = false;
-    
     queue<int> q;
     q.push(s);
     vector<int>::iterator i;
+    
     while(!q.empty()){
         int v = q.front();
         cout<<v<<" ";
         q.pop();
-        for(i= g[v].begin(); i != g[v].end(); i++){
+        for(i= g[v].begin(); i != g[v].end(); ++i){
             int temp =*i;
             if (visited[temp]){
-                visited[temp] = false;
                 q.push(temp);
-                                
+                visited[temp] = false;                   
             }    
         }    
     }  
@@ -39,11 +36,11 @@ int main(){
     graph[0].push_back(1);
     graph[1].push_back(0);
     graph[1].push_back(3);
-    graph[2].push_back(0);
+    graph[2].push_back(4);
     graph[2].push_back(1);
     graph[2].push_back(3);
-    graph[2].push_back(4);
-    graph[3].push_back(1);
+    graph[2].push_back(1);
+    graph[3].push_back(0);
     graph[3].push_back(2);
     graph[3].push_back(4);
     graph[3].push_back(5);
